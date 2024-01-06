@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="133.916" tests="2" skipped="0" failures="1" errors="0">
+<testcase classname="Login" name="Intialize browser,login to the application" time="53.949">
+<system-out><![CDATA[
+Given Login to the application using username and password..................passed
+When validate if the title is "Giift LBMS"..................................passed
+Then click on the profile section...........................................passed
+Then select the program "A program four"....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Reports feature" name="View the recently created report in the transactional section" time="54.716">
+<failure type="org.openqa.selenium.JavascriptException" message="javascript error: Cannot read properties of null (reading 'value')
+  (Session info: chrome=120.0.6099.129)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.2.1', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [3b89cb6708accd2fbf65c77714d055bd, executeScript {script=return document.querySelector('#contentAreaDownloadsView .downloadMainArea .downloadContainer description:nth-of-type(1)').value, args=[]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.129, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: /var/folders/nj/n_9gw81j7mq...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57248}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57248/devtoo..., se:cdpVersion: 120.0.6099.129, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3b89cb6708accd2fbf65c77714d055bd">
+<![CDATA[org.openqa.selenium.JavascriptException: javascript error: Cannot read properties of null (reading 'value')
+  (Session info: chrome=120.0.6099.129)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.2.1', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [3b89cb6708accd2fbf65c77714d055bd, executeScript {script=return document.querySelector('#contentAreaDownloadsView .downloadMainArea .downloadContainer description:nth-of-type(1)').value, args=[]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.129, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: /var/folders/nj/n_9gw81j7mq...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57248}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57248/devtoo..., se:cdpVersion: 120.0.6099.129, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3b89cb6708accd2fbf65c77714d055bd
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+	at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:468)
+	at stepDefinition.ReportsStepDefinition.download_the_reportn(ReportsStepDefinition.java:623)
+	at ✽.download the "Daily" report(file:///Users/basavaraj/Automation/Pramod/v2/LBMSCloud/src/test/java/features/Reports.feature:30)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User navigates to reports module......................................passed
+When user validate the existing report "Accrual Report" and click on "View".passed
+And download the "Daily" report.............................................failed
+]]></system-out>
+</testcase>
+</testsuite>
