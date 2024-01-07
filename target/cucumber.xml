@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="20.524" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Login" name="Intialize browser,login to the application" time="14.346">
+<testsuite name="Cucumber" time="71.515" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Login" name="Intialize browser,login to the application" time="50.814">
 <system-out><![CDATA[
 Given Login to the application using username and password..................passed
 When validate if the title is "Giift LBMS"..................................passed
