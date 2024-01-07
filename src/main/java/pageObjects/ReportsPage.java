@@ -107,6 +107,9 @@ public class ReportsPage {
 
 	@FindBy(xpath="//span[text()='Delete']")
 	WebElement ClickDeleteButton;
+	
+	@FindBy(xpath="//span[text()='Generate']")
+	WebElement ClickGenerateButton;
 
 
 	@FindBy(xpath="//span[text()='I understand & Delete']")
@@ -339,6 +342,10 @@ public class ReportsPage {
 	//View transactional return methods
 	public WebElement getClickViewButton() {
 		return ClickViewButton;
+	}
+	
+	public WebElement getClickGenerateButton() {
+		return ClickGenerateButton;
 	}
 	
 	public WebElement getValidateHeader() {

@@ -53,7 +53,7 @@ public class base {
 		     prefs.put("profile.password_manager_enabled", false);
 		     options.setExperimentalOption("prefs", prefs);
 			
-			
+		     options.addArguments("headless");
 			
 			driver= new ChromeDriver(options);
 			

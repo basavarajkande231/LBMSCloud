@@ -97,6 +97,12 @@ Given User navigates to reports module
 When user click on the logs section and search the file name by entering from date as "11/25/2023" and to date as "01/01/2024"
 And user search the file name as "1812202325p5TXN" and validate the result
 
+@GenerateLiveReportSmoketest1
+Scenario: Generate the live report
+Given User navigates to reports module
+When user validate the existing report "Members report" and click on "Generate"
+And entering from date as "12/11/2023" and to date as "07/01/2024"
+
 
 
 

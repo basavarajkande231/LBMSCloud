@@ -1,7 +1,7 @@
 package stepDefinition;
 
 
-import java.io.File;
+
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
@@ -9,9 +9,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
-import com.aventstack.extentreports.reporter.FileUtil;
-
 import io.cucumber.java.en.*;
 import pageObjects.NavigationPage;
 import pageObjects.ReportsPage;
@@ -297,7 +294,7 @@ Thread.sleep(5000);
 
 					ActionClick.click();
 
-					if (Actions.equalsIgnoreCase("View")) {
+					if (Actions.equalsIgnoreCase(Actions)) {
 
 						BrowserUtils.clickElement(reports.getClickViewButton());
 						Thread.sleep(500);
@@ -307,8 +304,12 @@ Thread.sleep(5000);
 						Assert.assertEquals(ActualHeaderTitle, reportName);
                         
 						
-					}
-					else {
+					} else if (Actions.equalsIgnoreCase(Actions)) {
+
+						BrowserUtils.clickElement(reports.getClickGenerateButton());
+						Thread.sleep(500);
+						
+						} else {
 						BrowserUtils.clickElement(reports.getClickDeleteButton());
 						BrowserUtils.clickElement(reports.getConfirmDeleteButton());
 
