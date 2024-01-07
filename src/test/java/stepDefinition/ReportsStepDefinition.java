@@ -68,14 +68,14 @@ public class ReportsStepDefinition extends base{
 
 				String reportsSettingSuccess = reports.getSettingsSuccessMessage().getText();
 				System.out.println("The success message is: " + reportsSettingSuccess);
-				Assert.assertEquals(reportsSettingSuccess, "Setting saved sucessfully");
+				Assert.assertEquals(reportsSettingSuccess, successToastMessage);
 			}
 			else if (successToastMessage.equalsIgnoreCase("Report saved successfully")) {
 				Thread.sleep(1000);
 
 				String createReportSuccessMessage = reports.getCreateTXNReportSuccessMessage().getText();
 				System.out.println("The success message is: " + createReportSuccessMessage);
-				Assert.assertEquals(createReportSuccessMessage, "Report saved sucessfully");
+				Assert.assertEquals(createReportSuccessMessage, successToastMessage);
 
 			}
 			else if (successToastMessage.equalsIgnoreCase("Report deleted successfully")) {
@@ -85,10 +85,17 @@ public class ReportsStepDefinition extends base{
 
 				String deleteReportSuccessMessage = reports.getDeleteTXNReportSuccessMessage().getText();
 				System.out.println("The success message is: " + deleteReportSuccessMessage);
-				Assert.assertEquals(deleteReportSuccessMessage, "Report deleted successfully");
+				Assert.assertEquals(deleteReportSuccessMessage, successToastMessage);
 
+			} else if (successToastMessage.equalsIgnoreCase("Your report is generated now")) {
+
+				//Wait for 2 second then element will find and then match the condition
+				Thread.sleep(1000);
+
+				String GenerateReportSuccessMessage = reports.getGenerateLiveReportSuccessMessage().getText();
+				System.out.println("The success message is: " + GenerateReportSuccessMessage);
+				Assert.assertEquals(GenerateReportSuccessMessage, successToastMessage);
 			}
-
 			
 		} catch (StaleElementReferenceException exception) {
 			exception.printStackTrace();
@@ -294,7 +301,7 @@ Thread.sleep(5000);
 
 					ActionClick.click();
 
-					if (Actions.equalsIgnoreCase(Actions)) {
+					if (Actions.equalsIgnoreCase("View")) {
 
 						BrowserUtils.clickElement(reports.getClickViewButton());
 						Thread.sleep(500);
@@ -304,7 +311,7 @@ Thread.sleep(5000);
 						Assert.assertEquals(ActualHeaderTitle, reportName);
                         
 						
-					} else if (Actions.equalsIgnoreCase(Actions)) {
+					} else if (Actions.equalsIgnoreCase("Generate")) {
 
 						BrowserUtils.clickElement(reports.getClickGenerateButton());
 						Thread.sleep(500);
@@ -632,10 +639,20 @@ Thread.sleep(5000);
 		
 	//Assert.assertTrue(BrowserUtils.isFileDownload("abc", "csv", 5000));
 		
+	}
+	
+	@And ("user enters the from date as {string} and to date as {string}")
+	public void user_enters_the_from_date_as_and_to_date_as(String StartDate, String EndDate) throws InterruptedException {
 		
-		
+		BrowserUtils.ClearAndEnterText(reports.getStartDate(), StartDate);
+		BrowserUtils.ClearAndEnterText(reports.getEndDate(), EndDate);
+		BrowserUtils.clickElement(reports.getClickGenerateButton());
+	
 		
 	}
+		
+
+	
 
 }
 

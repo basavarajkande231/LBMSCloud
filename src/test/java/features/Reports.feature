@@ -100,8 +100,9 @@ And user search the file name as "1812202325p5TXN" and validate the result
 @GenerateLiveReportSmoketest1
 Scenario: Generate the live report
 Given User navigates to reports module
-When user validate the existing report "Members report" and click on "Generate"
-And entering from date as "12/11/2023" and to date as "07/01/2024"
+When user validate the existing report "Accrual report" and click on "Generate"
+And user enters the from date as "12/11/2023" and to date as "07/01/2024"
+Then user should get the success message as "Your report is generated now"
 
 
 

@@ -80,6 +80,10 @@ public class ReportsPage {
 
 	@FindBy (xpath="//div[text()='Report deleted successfully']")
 	WebElement DeleteTXNReportSuccessMessage;
+	
+	@FindBy (xpath="//div[text()='Your report is generated now']")
+	WebElement GenerateLiveReportSuccessMessage;
+	
 
 	//Reports lists all row data details
 	@FindAll(@FindBy(how = How.XPATH, using = "//table[@class='MuiTable-root tss-900muf-MUIDataTable-tableRoot css-1owb465']//td"))
@@ -320,6 +324,11 @@ public class ReportsPage {
 	public WebElement  getDeleteTXNReportSuccessMessage() {
 		return  DeleteTXNReportSuccessMessage;
 	}
+	
+	public WebElement  getGenerateLiveReportSuccessMessage() {
+		return  GenerateLiveReportSuccessMessage;
+	}
+	
 
 	public List<WebElement> getAllRowsCount() {
 		return AllRowsCount;

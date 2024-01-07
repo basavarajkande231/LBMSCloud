@@ -54,7 +54,7 @@ public class base {
 		     options.setExperimentalOption("prefs", prefs);
 			
 		     //use the below code if you want to run the code in headless mode
-		     options.addArguments("headless");
+		    // options.addArguments("headless");
 			
 			driver= new ChromeDriver(options);
 			
