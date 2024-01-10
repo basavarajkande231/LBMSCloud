@@ -27,7 +27,7 @@ Scenario: View the recently created report in the transactional section
 Given User navigates to reports module
 When user validate the existing report "Accrual Report" and click on "View"
 #Currently we have 5 reports generate options Daily, Weekly, Monthly, Quarterly and Yearly
-And download the "Daily" report
+And download the "Weekly" report
 And verify the recently downloaded "Spend points report" file
 
 
@@ -53,7 +53,7 @@ Then user should get the success message as "Report saved successfully"
 Scenario: View the recently created communication report in the communication section
 When user validate the existing report "Email and SMS communication report" and click on "View"
 #Currently we have 5 reports generate options Daily, Weekly, Monthly, Quarterly and Yearly
-And download the "Daily" report
+And download the "Weekly" report
 
 @CommunicationReportSmoketest1
 Scenario: Delete the recently created accrual reports in the transactional section

@@ -576,12 +576,9 @@ Thread.sleep(5000);
 		// Use this code if you want to download the daily report from the preview section
 
 		/*
-
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		Thread.sleep(1000);
-
 		BrowserUtils.clickElement(reports.getDownloadPreviewLink());
-
 		 */
 
 		// Use Use this code if you want to download the daily/weekly/monthly report from the calender
@@ -593,14 +590,22 @@ Thread.sleep(5000);
 			BrowserUtils.submit(reports.getTimeInterval());
 
 			BrowserUtils.clickElement(reports.getSelectDate());
+			
+			if(reports.getSelectDate().isSelected())
+			{
 			BrowserUtils.clickElement(reports.getSelectCurrentDate());
-
+			}else {
+				
+			}
 		} else if (PeriodOfGeneration.equalsIgnoreCase("Weekly")) {
 			BrowserUtils.enterText(reports.getTimeInterval(), PeriodOfGeneration);
 			BrowserUtils.submit(reports.getTimeInterval());
 
-			BrowserUtils.clickElement(reports.getSelectWeek());
-			BrowserUtils.clickElement(reports.getSelectCurrentWeek());
+			if(reports.getWeekHeaderSection().isDisplayed()) {
+				BrowserUtils.clickElement(reports.getSelectWeek());
+				BrowserUtils.clickElement(reports.getSelectCurrentWeek());
+			}
+			
 
 		} else if (PeriodOfGeneration.equalsIgnoreCase("Monthly")) {
 			BrowserUtils.enterText(reports.getTimeInterval(), PeriodOfGeneration);

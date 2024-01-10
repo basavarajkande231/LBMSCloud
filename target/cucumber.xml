@@ -1,19 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="148.179" tests="2" skipped="0" failures="0" errors="0">
-<testcase classname="Login" name="Intialize browser,login to the application" time="50.838">
+<testsuite name="Cucumber" time="129.746" tests="6" skipped="0" failures="3" errors="0">
+<testcase classname="Login" name="Intialize browser,login to the application" time="51.164">
 <system-out><![CDATA[
 Given Login to the application using username and password..................passed
 When validate if the title is "Giift LBMS"..................................passed
 Then click on the profile section...........................................passed
-Then select the program "A program four"....................................passed
+Then select the program "UseroqjhCTOR"......................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Reports feature" name="Generate the live report" time="70.927">
+<testcase classname="Tiers feature" name="Create a new tier" time="28.675">
 <system-out><![CDATA[
-Given User navigates to reports module......................................passed
-When user validate the existing report "Accrual report" and click on "Generate".passed
-And user enters the from date as "12/11/2023" and to date as "07/01/2024"...passed
-Then user should get the success message as "Your report is generated now"..passed
+Given User navigates to tier module.........................................passed
+When user clicks on the Enable Tiers or Add a New Tier button...............passed
+And User navigates to create new tier page and select the "Silver" tier icon.passed
+And enter tier name as "Bronze" multiplier as "1.25" milestone as "100"  bonus as "10" and click "Launch".passed
+Then user gets the success message as "Tiers has been successfully enabled".passed
+]]></system-out>
+</testcase>
+<testcase classname="Tiers feature" name="create second Tier" time="3.086">
+<failure type="org.openqa.selenium.StaleElementReferenceException" message="stale element reference: stale element not found
+  (Session info: chrome=120.0.6099.199)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.2.1', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [25d1d57840f31f4eeda6db9020af1e14, clickElement {id=9210878F2467AB61B1C6C7A0AAA2DCDB_element_1690}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.199, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: /var/folders/nj/n_9gw81j7mq...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59713}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:59713/devtoo..., se:cdpVersion: 120.0.6099.199, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (25d1d57840f31f4eeda6db9020af1e14)] -&gt; xpath: //span[text()='Enable Tiers']]
+Session ID: 25d1d57840f31f4eeda6db9020af1e14">
+<![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=120.0.6099.199)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.2.1', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [25d1d57840f31f4eeda6db9020af1e14, clickElement {id=9210878F2467AB61B1C6C7A0AAA2DCDB_element_1690}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.199, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: /var/folders/nj/n_9gw81j7mq...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59713}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:59713/devtoo..., se:cdpVersion: 120.0.6099.199, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (25d1d57840f31f4eeda6db9020af1e14)] -> xpath: //span[text()='Enable Tiers']]
+Session ID: 25d1d57840f31f4eeda6db9020af1e14
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:224)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy27.click(Unknown Source)
+	at resources.BrowserUtils.clickElement(BrowserUtils.java:71)
+	at stepDefinition.TiersStepDefinition.user_clicks_on_the_Enable_Tiers_or_Add_a_New_Tiers_button(TiersStepDefinition.java:41)
+	at ✽.user clicks on the Enable Tiers or Add a New Tier button(file:///Users/basavaraj/Documents/GitHub/Automation/LBMSCloud/src/test/java/features/Tiers.feature:15)
+]]>
+</failure>
+<system-out><![CDATA[
+When user clicks on the Enable Tiers or Add a New Tier button...............failed
+And User navigates to create new tier page and select the "Platinum" tier icon.skipped
+And enter tier name as "Platinum" multiplier as "1.5" milestone as "1000"  bonus as "100" and click "Launch".skipped
+Then user gets the success message as "Tiers has been successfully enabled".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Tiers feature" name="Edit Tier" time="5.233">
+<failure type="java.lang.AssertionError" message="Record not found: ">
+<![CDATA[java.lang.AssertionError: Record not found: 
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at stepDefinition.TiersStepDefinition.user_validates_created_tier_clicks_edit(TiersStepDefinition.java:166)
+	at ✽.user validates "Platinum" tier and clicks "Edit"(file:///Users/basavaraj/Documents/GitHub/Automation/LBMSCloud/src/test/java/features/Tiers.feature:24)
+]]>
+</failure>
+<system-out><![CDATA[
+Then user validates "Platinum" tier and clicks "Edit".......................failed
+When User navigates to create new tier page and select the "Bronze" tier icon.skipped
+And enter tier name as "Titanium" multiplier as "2" milestone as "500"  bonus as "50" and click "Update".skipped
+Then user gets the success message as "Tier Updated Successfully"...........skipped
+]]></system-out>
+</testcase>
+<testcase classname="Tiers feature" name="Delete Tier" time="4.967">
+<failure type="java.lang.AssertionError" message="Record not found: ">
+<![CDATA[java.lang.AssertionError: Record not found: 
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at stepDefinition.TiersStepDefinition.user_validates_created_tier_clicks_edit(TiersStepDefinition.java:166)
+	at ✽.user validates "Titanium" tier and clicks "Delete"(file:///Users/basavaraj/Documents/GitHub/Automation/LBMSCloud/src/test/java/features/Tiers.feature:32)
+]]>
+</failure>
+<system-out><![CDATA[
+Then user validates "Titanium" tier and clicks "Delete".....................failed
+Then user should navigate to tier lists page along with success message "Titanium" "tier has been successfully deleted".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Tiers feature" name="Tier Settings" time="11.172">
+<system-out><![CDATA[
+Given User navigates to tier module.........................................passed
+When user change the tier settings timeframe................................passed
+Then user gets the success message as "Tier Setting Updated Successfully"...passed
 ]]></system-out>
 </testcase>
 </testsuite>

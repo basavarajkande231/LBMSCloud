@@ -160,7 +160,8 @@ public class MemberSearchStepDefinition extends base {
 		}else {
 			System.out.println("Unique is set to false hence not enabling");
 		}			
-		BrowserUtils.clickElement(Membersearch.getCancelButton());
+		//BrowserUtils.clickElement(Membersearch.getCancelButton());
+		BrowserUtils.clickElement(Membersearch.getSaveButton());
 
 	}
 }

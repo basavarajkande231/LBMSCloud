@@ -80,7 +80,7 @@ Examples:
 |Attribute_Name | API_Key 	 | Data_Type | Mandatory | Unique |
 |String_FF 			| String_FF  | String		 | false 		 | false  |
 |Number_TF 			| Number_TF  | Numbers	 | false     | true   |
-|DATE_FT 				| DATE_FT 	 | Decimals  | true      | false  |
-|decimal_TT 		| decimal_TT | Date			 | true      | true   |
+|DATE_FT 				| DATE_FT 	 | Date      | true      | false  |
+|decimal_TT 		| decimal_TT | Decimals	 | true      | true   |
 
 

@@ -153,7 +153,11 @@ public class ReportsPage {
 	@FindBy (xpath="//p[text()='Select Week']")
 	WebElement SelectWeek;
 	
-	@FindBy (xpath="//div[@aria-label='Choose Wednesday, December 20th, 2023']")
+	@FindBy (xpath="//div[@class='react-datepicker__current-month']")
+	WebElement WeekHeaderSection;
+	
+	
+	@FindBy (xpath="//div[@aria-disabled='false']")
 	WebElement SelectCurrentWeek;
 	
 	@FindBy (xpath="//p[text()='Select Month']")
@@ -161,6 +165,13 @@ public class ReportsPage {
 	
 	@FindBy (xpath="//div[@aria-label='Choose December 2023']")
 	WebElement SelectCurrentMonth;
+	
+	@FindBy (xpath="//button[@aria-label='Previous Year']")
+	WebElement ClickPerviousYearIcon;
+	
+	@FindBy (xpath="//button[@aria-label='Next Year']")
+	WebElement ClickNextYearIcon;
+	
 	
 	@FindBy (name="save")
 	WebElement ClickDownloadButton;
@@ -406,6 +417,11 @@ public class ReportsPage {
 		return  SelectWeek;
 	}
 	
+	public WebElement  getWeekHeaderSection() {
+		return  WeekHeaderSection;
+	}
+	
+	
 	public WebElement  getSelectCurrentWeek() {
 		return  SelectCurrentWeek;
 	}
@@ -417,6 +433,15 @@ public class ReportsPage {
 	public WebElement  getSelectCurrentMonth() {
 		return  SelectCurrentMonth;
 	}
+	
+	public WebElement  getClickPerviousYearIcon() {
+		return  ClickPerviousYearIcon;
+	}
+	
+	public WebElement  ClickNextYearIcon() {
+		return  ClickNextYearIcon;
+	}
+	
 	
 	public WebElement  getClickDownloadButton() {
 		return  ClickDownloadButton;

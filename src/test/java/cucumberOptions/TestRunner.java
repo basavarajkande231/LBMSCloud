@@ -19,8 +19,8 @@ import io.cucumber.junit.CucumberOptions;
 		//specify tags if any particular test case has to be run
 		// Tags will run alphabetical order
 		
-				tags=("@AppLoginSmoketest1 or @GenerateLiveReportSmoketest1"),
-				//tags=("@Smoketest1 or @TiersSmoketest1"),
+				//tags=("@AppLoginSmoketest1 or @TransactionalSmoketest2"),
+				tags=("@AppLoginSmoketest1 or @TiersSmoketest1"),
 		
 				//tags=("@AppLoginSmoketest1 or @MembersFilterSmoketest1"),
 				//tags=("@AppLoginSmoketest1 or @MembersReportSmoketest1"),
