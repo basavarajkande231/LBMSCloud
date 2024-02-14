@@ -82,8 +82,10 @@ public class MemberSearchPage {
 	@FindBy(xpath="//span[text()='Filters']")
 	WebElement MemberFilter;
 	
-	@FindBy(xpath="//div[@class='eui-dd-input']/input")
+	@FindBy(xpath="(//div[@class='eui-dd-input'])[1]")
 	WebElement operator;
+	
+	
 	
 	@FindBy(xpath="//div[@class='position-relative']//div[@class='mb-3'][2]//input|//textarea")
 	WebElement InputValue1;

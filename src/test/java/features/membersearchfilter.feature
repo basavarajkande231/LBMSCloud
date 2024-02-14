@@ -1,6 +1,6 @@
 Feature: Member search filter feature
 
-@MemberSearchFilterSmoketest1
+@MemberSearchFilterSmoketest1 @RegressionTest1
 Scenario Outline: Apply any single filter with its respective operator and do a search  
 Given Naviagte to member search module
 When click on filter option
@@ -16,5 +16,10 @@ When click on filter option
 Then select "Age" filter
 Then Select operator "Is less than or equal to"
 Then Enter value1 "40" and value2 "2023-09-09" for operator "Is less than or equal to"
-Then click on apply filter button and validate the result
+
+
+Then select "Enrollment Date" filter
+Then Select operator "Is between"
+Then Enter value3 "2023-09-09" and value4 "2023-10-09" for operator "Is between"
+
 

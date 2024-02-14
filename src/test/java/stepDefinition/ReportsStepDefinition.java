@@ -64,14 +64,14 @@ public class ReportsStepDefinition extends base{
 
 		try {
 			if(successToastMessage.equalsIgnoreCase("Setting saved sucessfully")) {
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 
 				String reportsSettingSuccess = reports.getSettingsSuccessMessage().getText();
 				System.out.println("The success message is: " + reportsSettingSuccess);
 				Assert.assertEquals(reportsSettingSuccess, successToastMessage);
 			}
 			else if (successToastMessage.equalsIgnoreCase("Report saved successfully")) {
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 
 				String createReportSuccessMessage = reports.getCreateTXNReportSuccessMessage().getText();
 				System.out.println("The success message is: " + createReportSuccessMessage);
@@ -80,8 +80,8 @@ public class ReportsStepDefinition extends base{
 			}
 			else if (successToastMessage.equalsIgnoreCase("Report deleted successfully")) {
 
-				//Wait for 2 second then element will find and then match the condition
-				Thread.sleep(1000);
+				//Wait for 1 second then element will find and then match the condition
+				Thread.sleep(3000);
 
 				String deleteReportSuccessMessage = reports.getDeleteTXNReportSuccessMessage().getText();
 				System.out.println("The success message is: " + deleteReportSuccessMessage);
@@ -89,20 +89,21 @@ public class ReportsStepDefinition extends base{
 
 			} else if (successToastMessage.equalsIgnoreCase("Your report is generated now")) {
 
-				//Wait for 2 second then element will find and then match the condition
-				Thread.sleep(1000);
+				//Wait for 1 second then element will find and then match the condition
+				Thread.sleep(2000);
 
-				String GenerateReportSuccessMessage = reports.getGenerateLiveReportSuccessMessage().getText();
-				System.out.println("The success message is: " + GenerateReportSuccessMessage);
-				Assert.assertEquals(GenerateReportSuccessMessage, successToastMessage);
+				String LiabilityReportSuccessMessage = reports.getGenerateLiveReportSuccessMessage().getText();
+				System.out.println("The success message is: " + LiabilityReportSuccessMessage);
+				Assert.assertEquals(LiabilityReportSuccessMessage, successToastMessage);
 			}
-			
+
+
 		} catch (StaleElementReferenceException exception) {
 			exception.printStackTrace();
-			
+
 		}
-		
-		
+
+
 	}
 
 
@@ -202,9 +203,8 @@ public class ReportsStepDefinition extends base{
 
 	@When("add the filter as {string} {string} {string} {string}")
 	public void add_the_filter_as(String CreditByAccrual, String CreditByBonus, String DebitByBonus, String DebitByCashback) throws InterruptedException {
-		//Enter the Transaction Id text by automatically by using key board
 
-
+		//Enters the Transaction Id text by automatically by using key board
 		BrowserUtils.enterText(reports.getFilterColumn(), CreditByAccrual);
 		BrowserUtils.submit(reports.getFilterColumn());
 
@@ -221,7 +221,7 @@ public class ReportsStepDefinition extends base{
 	@When("select the period of generation as {string} {string} {string} {string} {string}")
 	public void select_the_period_of_generation_as(String Daily, String Weekly, String Monthly, String Quarterly, String Yearly) throws InterruptedException {
 
-
+		//Enters the frequency automatically by using key board
 		BrowserUtils.enterText(reports.getPeriodOfGeneration(), Daily);
 		BrowserUtils.submit(reports.getPeriodOfGeneration());
 
@@ -242,32 +242,32 @@ public class ReportsStepDefinition extends base{
 
 
 	@When("clicks on the {string} button")
-	public void clicks_on_the_button(String SaveButton) throws InterruptedException {
-
-		//Using this method because of the "ElementClickInterceptedException" error
+	public void clicks_on_the_button(String Button) throws InterruptedException {
 
 		try {
-			Thread.sleep(1000);
-			BrowserUtils.clickElement(reports.getClickSaveButton());
-		} catch (ElementClickInterceptedException exception) {
+			if(Button.equalsIgnoreCase("Save")){
+				Thread.sleep(1000);
+				BrowserUtils.clickElement(reports.getClickSaveButton());
 
-			JavascriptExecutor executor = (JavascriptExecutor) driver;
-			Thread.sleep(1000);
-			executor.executeScript("arguments[0].click();", reports.getClickSaveButton());
+			}else if(Button.equalsIgnoreCase("Generate")) {
+				Thread.sleep(1000);
+				BrowserUtils.findAndWaitForElement(reports.getClickGenerateButton());
 
+			}
+		}catch (NullPointerException exception) {
+			exception.printStackTrace();	
 		}
-
-
 	}
 
 
 	@When("user validate the existing report {string} and click on {string}")
 	public void user_validate_the_existing_report_and_click_on(String reportName, String Actions) throws InterruptedException {
-Thread.sleep(5000);
-		//Use this code to perform scroll on application
+		Thread.sleep(5000);
 
-				((JavascriptExecutor) driver).executeScript("window.scrollBy(0,550)", "");
-		
+		//Use this code to perform scroll on application
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,650)", "");
+
 		try {
 
 			List<WebElement> allRowsCount = BrowserUtils.findAndWaitForElements(reports.getAllRowsCount());
@@ -309,16 +309,17 @@ Thread.sleep(5000);
 						String ActualHeaderTitle=reports.getValidateHeader().getText();
 						System.out.println("The header title is: "+ActualHeaderTitle);
 						Assert.assertEquals(ActualHeaderTitle, reportName);
-                        
-						
+
+
 					} else if (Actions.equalsIgnoreCase("Generate")) {
 
 						BrowserUtils.clickElement(reports.getClickGenerateButton());
 						Thread.sleep(500);
-						
-						} else {
+
+					} else {
 						BrowserUtils.clickElement(reports.getClickDeleteButton());
-						BrowserUtils.clickElement(reports.getConfirmDeleteButton());
+						//BrowserUtils.clickElement(reports.getConfirmDeleteButton());
+						BrowserUtils.clickElement(reports.getClickCancelButton());
 
 					}
 				}
@@ -395,20 +396,10 @@ Thread.sleep(5000);
 
 	// MEMBERS SECTION
 
-	@When("add the report column as {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
-	public void add_the_report_column_as(String MemberID, String MemberName, String Email, String PhoneNumber, String SegmentTag, String EnrollmentDate, String Gender, String Address, 
-			String Tier, String Status, String DOB, String PointsAvailable, String PointsExpired, String PointsRedeemed, String LastTransaction, String TotalTransactions, String TotalMembers, String TotalPointsIssued, String TotalPointsRedeemed, String TotalPointsExpired) throws InterruptedException {
+	@When("add the report column as {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+	public void add_the_report_column_as(String RelationReference, String SegmentTag, String EnrollmentDate, String Tier, String Status,String ActivatedDate, String PointsAvailable, String PointsExpired, String PointsRedeemed, String LastTransaction, String TotalTransactions, String TotalMembers, String TotalPointsIssued, String TotalPointsRedeemed, String TotalPointsExpired) throws InterruptedException {
 
-		BrowserUtils.enterText(reports.getReportColumn(), MemberID);
-		BrowserUtils.submit(reports.getReportColumn());
-
-		BrowserUtils.enterText(reports.getReportColumn(), MemberName);
-		BrowserUtils.submit(reports.getReportColumn());
-
-		BrowserUtils.enterText(reports.getReportColumn(), Email);
-		BrowserUtils.submit(reports.getReportColumn());
-
-		BrowserUtils.enterText(reports.getReportColumn(), PhoneNumber);
+		BrowserUtils.enterText(reports.getReportColumn(), RelationReference);
 		BrowserUtils.submit(reports.getReportColumn());
 
 		BrowserUtils.enterText(reports.getReportColumn(), SegmentTag);
@@ -417,19 +408,13 @@ Thread.sleep(5000);
 		BrowserUtils.enterText(reports.getReportColumn(), EnrollmentDate);
 		BrowserUtils.submit(reports.getReportColumn());
 
-		BrowserUtils.enterText(reports.getReportColumn(), Gender);
-		BrowserUtils.submit(reports.getReportColumn());
-
-		BrowserUtils.enterText(reports.getReportColumn(), Address);
-		BrowserUtils.submit(reports.getReportColumn());
-
 		BrowserUtils.enterText(reports.getReportColumn(), Tier);
 		BrowserUtils.submit(reports.getReportColumn());
 
 		BrowserUtils.enterText(reports.getReportColumn(), Status);
 		BrowserUtils.submit(reports.getReportColumn());
 
-		BrowserUtils.enterText(reports.getReportColumn(), DOB);
+		BrowserUtils.enterText(reports.getReportColumn(), ActivatedDate);
 		BrowserUtils.submit(reports.getReportColumn());
 
 		BrowserUtils.enterText(reports.getReportColumn(), PointsAvailable);
@@ -445,6 +430,9 @@ Thread.sleep(5000);
 		BrowserUtils.submit(reports.getReportColumn());
 
 		BrowserUtils.enterText(reports.getReportColumn(), TotalTransactions);
+		BrowserUtils.submit(reports.getReportColumn());
+
+		BrowserUtils.enterText(reports.getReportColumn(), TotalMembers);
 		BrowserUtils.submit(reports.getReportColumn());
 
 		BrowserUtils.enterText(reports.getReportColumn(), TotalPointsIssued);
@@ -481,47 +469,110 @@ Thread.sleep(5000);
 		BrowserUtils.clickElement(reports.getClickAddFilterButton());
 
 	}
-
-
-	@And("Enter values1 {string} and click Add Filter button")
-	public void Enter_value1_and_click_Add_Filter_button(String value1) {
-
-
-	}
-	/*
-
-	@And("Enter values1 {string} and values2 {string} for operator {string}")
-	public void Enter_value1_and_value2_for_operator(String inputvalue1, String inputvalue2, String operator ) throws InterruptedException {
-
-		if (operator.equalsIgnoreCase("Is greater than or equal to") || operator.equalsIgnoreCase("Is")
-				|| operator.equalsIgnoreCase("Is within") || operator.equalsIgnoreCase("Is not within")
-				|| operator.equalsIgnoreCase("Is less than or equal to") || operator.equalsIgnoreCase("Equals to")) {
-
-			BrowserUtils.enterText(reports.getInputValue1(), inputvalue1);
-			Thread.sleep(1000);
-			System.out.println("Before Add Filter click");
-			BrowserUtils.clickElement(reports.getClickAddFilterButton());
-			System.out.println("After Add Filter click");
-		}
-		else if (operator.equalsIgnoreCase("Is between")||operator.equalsIgnoreCase("Is not between")) {
-
-			BrowserUtils.enterText(reports.getInputValue1(), inputvalue1);
-			BrowserUtils.enterText(reports.getInputValue2(), inputvalue2);
-
-			BrowserUtils.clickElement(reports.getClickAddFilterButton());
-		}		
-
-	}
-
-	 */
-
 	@And("click on apply filter button and validate the filters")
 	public void click_on_apply_filter_button_and_validate_the_filters() throws InterruptedException {
 
 		BrowserUtils.clickElement(reports.getApplyFilter());
 	}
 
+	//LIABILITY SECTION
 
+	@When("user selects {string} section and click on the Generate Custom Report")
+	public void user_selects_section_and_click_on_the_Generate_Custom_Report(String Section) throws InterruptedException {
+
+		//Use this code to perform scroll on application
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,650)", "");
+
+		try {
+			if(Section.equalsIgnoreCase("Liability")) {
+
+				BrowserUtils.clickElement(reports.getLiabilitySection());
+				Thread.sleep(1000);
+				BrowserUtils.clickElement(reports.getGenerateCustomReportButton());
+
+			} 
+		} catch (ElementClickInterceptedException exception) {
+			exception.printStackTrace();
+
+		}
+
+	}
+
+	@And("select the from date as {string} {string} and to date as {string} {string}")
+	public void select_the_from_month_as_and_to_month_as(String fromMonth, String fromYear, String toMonth, String toYear) throws InterruptedException {
+
+		try {
+
+			BrowserUtils.clickElement(reports.getClickFromDate());
+			String CurrentYear = reports.getCurrentYear().getText();
+			System.out.println("The current year is: "+CurrentYear);
+
+			if(fromYear.equalsIgnoreCase(CurrentYear)) {
+				BrowserUtils.clickElement(reports.getSelectCurrentMonth());
+				BrowserUtils.clickElement(reports.getClickToDate());
+				BrowserUtils.clickElement(reports.getSelectCurrentMonth());
+				BrowserUtils.clickElement(reports.getClickGenerateButton());
+
+				//Use this code to perform scroll on application
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("window.scrollBy(0,650)", "");
+
+			}else{
+				BrowserUtils.clickElement(reports.getClickPreviousYearIcon());
+				if(fromYear.equalsIgnoreCase("2023")) {
+
+					//Get all months from calendar to select correct one
+
+					List<WebElement> list_AllMonth = BrowserUtils.findAndWaitForElements(reports.getlistAllMonth());
+
+					// Validating the created tier entry is available or not
+					boolean dataStatus = false;
+
+					for (WebElement ele : list_AllMonth) {
+						String value = ele.getText();
+						System.out.println(value);
+						Thread.sleep(500);
+
+						if (value.equalsIgnoreCase(fromMonth)) {
+							dataStatus = true;
+							System.out.println("Record found: " + dataStatus);
+							Thread.sleep(500);
+
+							ele.click();
+
+							BrowserUtils.clickElement(reports.getClickToDate());
+							BrowserUtils.clickElement(reports.getSelectCurrentMonth());
+							BrowserUtils.clickElement(reports.getClickGenerateButton());
+
+							//Use this code to perform scroll on application
+							JavascriptExecutor js = (JavascriptExecutor) driver;
+							js.executeScript("window.scrollBy(0,650)", "");
+
+						}
+					}
+				}
+			}
+
+		} catch (StaleElementReferenceException exception) {
+			exception.printStackTrace();	
+		}
+
+	}
+
+	@And ("select From Beginning and to date as {string} {string}")
+	public void select_From_Beginning_and_to_date_as(String toMonth, String toYear) throws InterruptedException {
+
+		BrowserUtils.clickElement(reports.getSelectFromBeginning());
+		BrowserUtils.clickElement(reports.getClickToDate());
+		BrowserUtils.clickElement(reports.getSelectCurrentMonth());
+		BrowserUtils.clickElement(reports.getClickGenerateButton());
+
+		//Use this code to perform scroll on application
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,650)", "");
+
+	}
 
 	//LOGS SECTION
 
@@ -547,6 +598,7 @@ Thread.sleep(5000);
 		String  actualresult=reports.SearchFilenameValidate(SearchByFileName);
 
 		Assert.assertEquals(actualresult, SearchByFileName);
+		Thread.sleep(1000);	
 
 	}
 
@@ -554,9 +606,9 @@ Thread.sleep(5000);
 	public void user_selects_section(String Section) throws InterruptedException{
 
 		if(Section.equalsIgnoreCase("Transactional")) {	
-			
+
 			BrowserUtils.clickElement(reports.getTransactionalSection());
-			
+
 		}else if(Section.equalsIgnoreCase("Members")) {
 
 			BrowserUtils.clickElement(reports.getMembersSection());
@@ -590,13 +642,8 @@ Thread.sleep(5000);
 			BrowserUtils.submit(reports.getTimeInterval());
 
 			BrowserUtils.clickElement(reports.getSelectDate());
-			
-			if(reports.getSelectDate().isSelected())
-			{
 			BrowserUtils.clickElement(reports.getSelectCurrentDate());
-			}else {
-				
-			}
+
 		} else if (PeriodOfGeneration.equalsIgnoreCase("Weekly")) {
 			BrowserUtils.enterText(reports.getTimeInterval(), PeriodOfGeneration);
 			BrowserUtils.submit(reports.getTimeInterval());
@@ -605,7 +652,7 @@ Thread.sleep(5000);
 				BrowserUtils.clickElement(reports.getSelectWeek());
 				BrowserUtils.clickElement(reports.getSelectCurrentWeek());
 			}
-			
+
 
 		} else if (PeriodOfGeneration.equalsIgnoreCase("Monthly")) {
 			BrowserUtils.enterText(reports.getTimeInterval(), PeriodOfGeneration);
@@ -628,36 +675,36 @@ Thread.sleep(5000);
 		}
 
 		BrowserUtils.clickElement(reports.getClickDownloadButton());
-	
- 
+
+
 		Thread.sleep(1000);
 		//Use this code if No records found error message
 		System.out.println("The error message is: " +reports.getNoRecordFound().getText());
-		
+
 		//Use this code if you want to come back after view the report
 		BrowserUtils.clickElement(reports.getbackButtonArrow());
 
 	}	
-	
+
 	@And ("verify the recently downloaded {string} file")
 	public void verify_the_recently_downloaded_file(String ReportName) {
-		
-	//Assert.assertTrue(BrowserUtils.isFileDownload("abc", "csv", 5000));
-		
+
+		//Assert.assertTrue(BrowserUtils.isFileDownload("abc", "csv", 5000));
+
 	}
-	
+
 	@And ("user enters the from date as {string} and to date as {string}")
 	public void user_enters_the_from_date_as_and_to_date_as(String StartDate, String EndDate) throws InterruptedException {
-		
+
 		BrowserUtils.ClearAndEnterText(reports.getStartDate(), StartDate);
 		BrowserUtils.ClearAndEnterText(reports.getEndDate(), EndDate);
 		BrowserUtils.clickElement(reports.getClickGenerateButton());
-	
-		
-	}
-		
 
-	
+
+	}
+
+
+
 
 }
 

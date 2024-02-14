@@ -41,47 +41,48 @@ public class base {
 		if (browserName.equals("chrome")) {
 
 			WebDriverManager.chromedriver().setup();
-			
+
 			// Use this code if you wnat to hide the "Chrome is being controlled by automated test software"
 			ChromeOptions options = new ChromeOptions(); 
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); 
-			
-		// use this code to hide the Save password popup
+
+			// Use this code if you wnat to run the code in chrome incognito mode
+			options.addArguments("--incognito");
+
+			// Use this code to hide the Save password popup
 			options.addArguments("--disable-save-password-bubble");
 			Map<String, Object> prefs = new HashMap<String, Object>();
-		     prefs.put("credentials_enable_service", false);
-		     prefs.put("profile.password_manager_enabled", false);
-		     options.setExperimentalOption("prefs", prefs);
-			
-		     //use the below code if you want to run the code in headless mode
-		    // options.addArguments("headless");
-			
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			options.setExperimentalOption("prefs", prefs);
+
+			//Use the below code if you want to run the code in headless mode
+			// options.addArguments("headless");
+
 			driver= new ChromeDriver(options);
-			
-		
-			
+
 		}else if (browserName.equals("firefox")) {
 
 			WebDriverManager.firefoxdriver().setup();
 			driver= new FirefoxDriver();
-			
+
 		}else if (browserName.equals("safari")) {
 			WebDriverManager.safaridriver().setup();
 			driver=new SafariDriver();
-			
+
 		}else if (browserName.equals("edge")) {
 			WebDriverManager.edgedriver().setup();
-			
+
 			// Use this code if you wnat to hide the "Microsoft Edge is being controlled by automated test software"
-			
+
 			EdgeOptions options = new EdgeOptions(); 
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); 
 			driver=new EdgeDriver(options);
-			
+
 		}
 
 		driver.manage().window().maximize();
-	
+
 		/*
 		driver.get("chrome://settings/clearBrowserData"); 
 		Thread.sleep(3000);
@@ -90,8 +91,8 @@ public class base {
 		Thread.sleep(3000);
 		clearData.click();
 		Thread.sleep(5000);
-        */
-		
+		 */
+
 		String applicationURL = prop.getProperty("url");
 		driver.get(applicationURL);
 		String title = driver.getTitle();

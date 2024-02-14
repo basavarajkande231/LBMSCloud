@@ -27,7 +27,7 @@ public class ConfigurationsStepDefinition extends base{
 		BrowserUtils.enterText(Configurations.getFirstName(), string);
 	    BrowserUtils.enterText(Configurations.getLastName(), string2);
 		BrowserUtils.enterText(Configurations.getEmail(), string3);
-		BrowserUtils.enterText(Configurations.getCountryCode(), string4);
+		BrowserUtils.enterText(Configurations.getCountryCode(), string4);;
 		BrowserUtils.submit(Configurations.getCountryCode());
 		BrowserUtils.enterText(Configurations.getPhone(), string5);
 	}

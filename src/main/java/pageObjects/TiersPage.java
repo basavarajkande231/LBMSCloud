@@ -29,7 +29,6 @@ public class TiersPage {
     @FindBy(xpath="//div[text()='Lifetime']/parent::div/preceding-sibling::div/preceding-sibling::input[@value='0']")
     WebElement LifetimeStatus;
     
-
 	@FindBy (xpath="//span[text()='Continue']")
 	WebElement ClickContinueButton;
 	
@@ -345,7 +344,7 @@ public class TiersPage {
 	}
 	
 	public String getdeleteTierSuccessMessage(String tierName) {
-		String deleteTierToastSuccessMessage = driver.findElement(By.xpath("//div[text()='"+tierName+" tier has been successfully deleted']")).getText();
+		String deleteTierToastSuccessMessage = driver.findElement(By.xpath("//div[text()="+tierName+" tier has been successfully deleted']")).getText();
 		return deleteTierToastSuccessMessage;
 	}
 	

@@ -43,8 +43,17 @@ public class NavigationPage {
 	@FindBy (xpath="//span[text()='Reports']")
 	WebElement ClickReports;
 	
-	@FindBy(xpath="//span[text()='Engage']")
-	WebElement EngageModule;
+	@FindBy(xpath="//div[text()='Engage']")
+	WebElement ClickEngage;
+	
+	@FindBy (xpath="//span[text()='Segments']")
+	WebElement ClickSegmentModule;
+	
+	@FindBy (xpath="//span[text()='Campaigns']")
+	WebElement ClickCampaignModule;
+	
+	@FindBy (xpath="//span[text()='Communications']")
+	WebElement ClickCommunicationsModule;
 
 	@FindBy(xpath="//div[@id='Configurations']")
 	WebElement Configurations;
@@ -75,9 +84,22 @@ public class NavigationPage {
 		return  ClickReports;
 	}
 	
-	public WebElement getEmgageModule() {
-		return EngageModule;
+	public WebElement getClickEngage() {
+		return ClickEngage;
 	}
+	
+	public WebElement  getClickSegmentModule() {
+		return  ClickSegmentModule;
+	}
+	
+	public WebElement  getClickCampaignModule() {
+		return  ClickCampaignModule;
+	}
+	
+	public WebElement  getClickCommunicationsModule() {
+		return  ClickCommunicationsModule;
+	}
+	
 	
 	public WebElement getConfigurations() {
 		return Configurations;

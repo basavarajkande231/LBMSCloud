@@ -13,7 +13,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class ReportsPage {
 
 	public WebDriver driver;
@@ -80,10 +79,10 @@ public class ReportsPage {
 
 	@FindBy (xpath="//div[text()='Report deleted successfully']")
 	WebElement DeleteTXNReportSuccessMessage;
-	
+
 	@FindBy (xpath="//div[text()='Your report is generated now']")
 	WebElement GenerateLiveReportSuccessMessage;
-	
+
 
 	//Reports lists all row data details
 	@FindAll(@FindBy(how = How.XPATH, using = "//table[@class='MuiTable-root tss-900muf-MUIDataTable-tableRoot css-1owb465']//td"))
@@ -99,87 +98,87 @@ public class ReportsPage {
 	WebElement Actionsrow;
 
 	//View the transactional report
-	
+
 	@FindBy(xpath="//span[text()='View']")
 	WebElement ClickViewButton;
-	
+
 	@FindBy(id="heading_text")
 	WebElement ValidateHeader;
-	
+
 	@FindBy(xpath="//img[@role='button']")
 	WebElement backButtonArrow;
 
 	@FindBy(xpath="//span[text()='Delete']")
 	WebElement ClickDeleteButton;
-	
+
 	@FindBy(xpath="//span[text()='Generate']")
 	WebElement ClickGenerateButton;
 
 
 	@FindBy(xpath="//span[text()='I understand & Delete']")
 	WebElement ConfirmDeleteButton;
-	
+
 	// Filter column WebElement
 
 	@FindBy (xpath="//div[text()='Filter']/parent::div/div/div/div/input")
-	//Use the belw if the DOM element is not present
+	//Use the below if the DOM element is not present
 	@CacheLookup
 	WebElement FilterColumn;
 
 	//Period of generation WebElement
-	
+
 	@FindBy (xpath="//div[text()='Period of generation']/parent::div/div/div/div/input")
 	//Use the belw if the DOM element is not present
 	@CacheLookup
 	WebElement PeriodOfGeneration;
-	
+
 	//DOWNLOAD REPORT LOCATORS
-	
+
 	@FindBy (xpath="//p[@class='sc-eqUAAy jHYWZO download-text']")
 	WebElement DownloadPreviewLink;
-	
+
 	@FindBy (xpath="//span[text()='Download Report']")
 	WebElement DownloadReportButton;
-	
+
 	@FindBy (xpath="//div[@class='css-bijwco']/div/input")
 	WebElement TimeInterval;
-	
+
 	@FindBy (xpath="//p[text()='Select Date']")
 	WebElement SelectDate;
-	
+
 	@FindBy (xpath="//div[@aria-current='date']")
 	WebElement SelectCurrentDate;
-	
+
 	@FindBy (xpath="//p[text()='Select Week']")
 	WebElement SelectWeek;
-	
+
 	@FindBy (xpath="//div[@class='react-datepicker__current-month']")
 	WebElement WeekHeaderSection;
-	
-	
+
+
 	@FindBy (xpath="//div[@aria-disabled='false']")
 	WebElement SelectCurrentWeek;
-	
+
 	@FindBy (xpath="//p[text()='Select Month']")
 	WebElement SelectMonth;
-	
-	@FindBy (xpath="//div[@aria-label='Choose December 2023']")
+
+	@FindBy (xpath="//div[@aria-current='date']")
 	WebElement SelectCurrentMonth;
-	
+
 	@FindBy (xpath="//button[@aria-label='Previous Year']")
 	WebElement ClickPerviousYearIcon;
-	
+
 	@FindBy (xpath="//button[@aria-label='Next Year']")
 	WebElement ClickNextYearIcon;
-	
-	
+
+
 	@FindBy (name="save")
 	WebElement ClickDownloadButton;
-	
+
 	@FindBy (xpath="//div[text()='No records found']")
 	WebElement NoRecordFound;
-	
-	
+
+
 
 	//MEMBERS SECTION
 
@@ -193,40 +192,28 @@ public class ReportsPage {
 
 	@FindBy (xpath="//span[text()='Add Filters']")
 	WebElement AddFilters;
-	
+
 	//member filters
-	
+
 	@FindBy(xpath="//span[text()='Filters']")
 	WebElement MemberFilter;
-	
+
 	//@FindBy(xpath="//div[@class='eui-dd-input']/input")
 	@FindBy(xpath="//div[@class='mb-3']//div[@class='css-bijwco']/div/input")
 	WebElement operator;
-	
+
 	@FindBy(xpath="//div[@class='position-relative']//div[@class='mb-3'][2]//input|//textarea")
 	WebElement InputValue1;
-	
+
 	@FindBy(xpath="//div[@class='position-relative']//div[@class='mb-3'][3]//input")
 	WebElement InputValue2;
-	
-    @FindBy(xpath="//span[text()='Add Filter']")
+
+	@FindBy(xpath="//span[text()='Add Filter']")
 	WebElement ClickAddFilterButton;
-	
+
 	@FindBy(xpath="//span[text()='Apply Filters']")
 	WebElement ApplyFilter;
-	
-	
-	//member search filter getter methods
-	
-		public void GetFilterandClick(String FilterName) {
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			//WebElement Filter = driver.findElement(By.xpath("//div[@class='d-flex align-items-end filter-card px-2 ']//div[text()='"+FilterName+"']"));
-			
-			WebElement Filter = driver.findElement(By.xpath("//div[text()='"+FilterName+"']"));
-			Filter.click();
-	
-		}
-	
+
 	//COMMUNICATION SECTION
 
 	//Communication section locators
@@ -238,35 +225,53 @@ public class ReportsPage {
 	WebElement CommunicationHeader;
 
 	// Report name is directly taking from transactional section
+
+
+	//LIABILITY SECTION
+	//Liability section locators
+
+	@FindBy (xpath="//span[text()='Liability']")
+	WebElement LiabilitySection;
+
+	@FindBy (xpath="//span[text()='Generate Custom Report']")
+	WebElement GenerateCustomReportButton;
 	
+	@FindBy (xpath="//div[@class='mb-2']//div[contains(@class,'custom-datepicker-input')]")
+	WebElement ClickFromDate;
 	
+	@FindBy (xpath="//button[@aria-label='Previous Year']")
+	WebElement ClickPreviousYearIcon;
+	
+	@FindBy (xpath="//div[text()='2024']")
+	WebElement CurrentYear;
+	
+	@FindBy (xpath="")
+	WebElement List;
+	@FindAll(@FindBy(how = How.XPATH, using = "//div[@class='react-datepicker__month-container']/div/div/div"))
+	List<WebElement> listAllMonth;
+	
+	@FindBy (xpath="//div[text()='From Beginning']")
+	WebElement SelectFromBeginning;
+	
+	@FindBy (xpath="//div[@class='mb-4 mt-1']//div[contains(@class,'custom-datepicker-input')]")
+	WebElement ClickToDate;
+
+	//Already written the generate button xpath and use same
+
 	//LOGS SECTION
 	//Logs locators
-	
+
 	@FindBy (xpath="//span[text()='Logs']")
 	WebElement LogsSection;
-	
+
 	@FindBy (xpath="//input[@placeholder='Search file name']")
 	WebElement SearchByFileName;
-	
+
 	@FindBy (id="start-date")
 	WebElement StartDate;
-	
+
 	@FindBy (id="end-date")
 	WebElement EndDate;
-	
-	
-	
-	
-	public String SearchFilenameValidate(String SearchByFileName) {
-		
-		WebElement actualFileName=driver.findElement(By.xpath("//div[text()='"+SearchByFileName+"']"));
-		return actualFileName.getText();
-
-	}
-	
-	
-	
 
 	//Settings return methods
 
@@ -335,16 +340,14 @@ public class ReportsPage {
 	public WebElement  getDeleteTXNReportSuccessMessage() {
 		return  DeleteTXNReportSuccessMessage;
 	}
-	
+
 	public WebElement  getGenerateLiveReportSuccessMessage() {
 		return  GenerateLiveReportSuccessMessage;
 	}
-	
 
 	public List<WebElement> getAllRowsCount() {
 		return AllRowsCount;
 	}
-
 
 	public List<WebElement> getAllRowsData() {
 		return AllRowsData;
@@ -358,24 +361,24 @@ public class ReportsPage {
 		return Actionsrow;
 	}
 
-	
+
 	//View transactional return methods
 	public WebElement getClickViewButton() {
 		return ClickViewButton;
 	}
-	
+
 	public WebElement getClickGenerateButton() {
 		return ClickGenerateButton;
 	}
-	
+
 	public WebElement getValidateHeader() {
 		return ValidateHeader;
 	}
-	
+
 	public WebElement getbackButtonArrow() {
 		return backButtonArrow;
 	}
-	
+
 
 	public WebElement getClickDeleteButton() {
 		return ClickDeleteButton;
@@ -392,7 +395,7 @@ public class ReportsPage {
 	public WebElement  getPeriodOfGeneration() {
 		return  PeriodOfGeneration;
 	}
-	
+
 	public WebElement  getDownloadPreviewLink() {
 		return  DownloadPreviewLink;
 	}
@@ -400,59 +403,59 @@ public class ReportsPage {
 	public WebElement  getDownloadReportButton() {
 		return  DownloadReportButton;
 	}
-	
+
 	public WebElement  getTimeInterval() {
 		return  TimeInterval;
 	}
-	
+
 	public WebElement  getSelectDate() {
 		return  SelectDate;
 	}
-	
+
 	public WebElement  getSelectCurrentDate() {
 		return  SelectCurrentDate;
 	}
-	
+
 	public WebElement  getSelectWeek() {
 		return  SelectWeek;
 	}
-	
+
 	public WebElement  getWeekHeaderSection() {
 		return  WeekHeaderSection;
 	}
-	
-	
+
+
 	public WebElement  getSelectCurrentWeek() {
 		return  SelectCurrentWeek;
 	}
-	
+
 	public WebElement  getSelectMonth() {
 		return  SelectMonth;
 	}
-	
+
 	public WebElement  getSelectCurrentMonth() {
 		return  SelectCurrentMonth;
 	}
-	
+
 	public WebElement  getClickPerviousYearIcon() {
 		return  ClickPerviousYearIcon;
 	}
-	
+
 	public WebElement  ClickNextYearIcon() {
 		return  ClickNextYearIcon;
 	}
-	
-	
+
+
 	public WebElement  getClickDownloadButton() {
 		return  ClickDownloadButton;
 	}
-	
+
 	public WebElement  getNoRecordFound() {
 		return  NoRecordFound;
 	}
-	
-	
-	
+
+
+
 	// MEMBER SECTION
 
 	public WebElement  getMemberHeader() {
@@ -471,7 +474,7 @@ public class ReportsPage {
 	}
 
 	// Member filters return methods
-	
+
 	public WebElement getOperator() {
 		return operator;
 	}
@@ -487,8 +490,8 @@ public class ReportsPage {
 	public WebElement getApplyFilter() {
 		return ApplyFilter;
 	}
-	
-	
+
+
 	//COMMUNICATION SECTION
 
 	//Communication section return methods
@@ -504,26 +507,98 @@ public class ReportsPage {
 		return CommunicationHeader;
 
 	}
-	
-	//LOGS SECTION 
-	//Logs section return methods
-	
-	public WebElement getLogsSection() {
-		return LogsSection;
+
+	//LIABILITY SECTION
+
+	//Liability section return methods
+
+	public WebElement getLiabilitySection() {
+		return LiabilitySection;
 	}
 	
-	public WebElement getSearchByFileName() {
-		return SearchByFileName;
+	public WebElement getGenerateCustomReportButton() {
+		return GenerateCustomReportButton;
 	}
 	
-	public WebElement getStartDate() {
-		return StartDate;
+	public WebElement getClickFromDate() {
+		return ClickFromDate;
 	}
 	
-	public WebElement getEndDate() {
-		return EndDate;
+	public WebElement getSelectFromBeginning() {
+		return SelectFromBeginning;
+	}
+	
+	public WebElement getClickToDate() {
+		return ClickToDate;
+	}
+	
+	public WebElement getClickPreviousYearIcon() {
+		return ClickPreviousYearIcon;
+	}
+	
+	public WebElement getCurrentYear() {
+		return CurrentYear;
+	}
+
+	public List<WebElement> getlistAllMonth() {
+		return listAllMonth;
 	}
 	
 
+	//LOGS SECTION 
+	//Logs section return methods
+
+	public WebElement getLogsSection() {
+		return LogsSection;
+	}
+
+	public WebElement getSearchByFileName() {
+		return SearchByFileName;
+	}
+
+	public WebElement getStartDate() {
+		return StartDate;
+	}
+
+	public WebElement getEndDate() {
+		return EndDate;
+	}
+
+	
+	public String getdeleteTierSuccessMessage(String tierName) {
+		String deleteTierToastSuccessMessage = driver.findElement(By.xpath("//div[text()="+tierName+" tier has been successfully deleted']")).getText();
+		return deleteTierToastSuccessMessage;
+	}
+
+	public void GetFilterandClick(String FilterName) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		//WebElement Filter = driver.findElement(By.xpath("//div[@class='d-flex align-items-end filter-card px-2 ']//div[text()='"+FilterName+"']"));
+
+		WebElement Filter = driver.findElement(By.xpath("//div[text()='"+FilterName+"']"));
+		Filter.click();
+
+	} //div[text()='Feb']
+	
+	public String SearchFilenameValidate(String SearchByFileName) {
+
+		WebElement actualFileName=driver.findElement(By.xpath("//div[text()='"+SearchByFileName+"']"));
+		return actualFileName.getText();
+
+	}
+	
+	//Liability 
+	public String selectFromDate(String fromMonth, String fromDate) {
+
+		WebElement actualFileName=driver.findElement(By.xpath("//div[text()='"+fromMonth+"']"));
+		return actualFileName.getText();
+
+	}
+	
+	public String selectToDate(String toMonth, String toDate) {
+
+		WebElement actualFileName=driver.findElement(By.xpath("//div[text()='"+toMonth+"']"));
+		return actualFileName.getText();
+
+	}
 
 }

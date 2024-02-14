@@ -92,23 +92,27 @@ Thread.sleep(1000);
 			String bonusValue, String saveButton) throws InterruptedException {
 
 		if (Tiers.getMultiplier().isEnabled()) {
+			
 			BrowserUtils.ClearAndEnterText(Tiers.getTierName(), tierName);
-
 			BrowserUtils.ClearAndEnterText(Tiers.getMultiplier(), multiplierValue);
-
 			BrowserUtils.ClearAndEnterText(Tiers.getMilestone(), milestoneValue);
-
 			BrowserUtils.ClearAndEnterText(Tiers.getBonus(), bonusValue);
+			
 		} else {
+		
 			BrowserUtils.ClearAndEnterText(Tiers.getTierName(), tierName);
 		}
 
 		if (saveButton.equalsIgnoreCase("Launch")) {
+			
 			BrowserUtils.clickElement(Tiers.getLaunch());
 			BrowserUtils.clickElement(Tiers.getSaveandEnableNow());
+			
 		} else {
+			
 			BrowserUtils.clickElement(Tiers.getUpdateButton());
 			BrowserUtils.clickElement(Tiers.getClickConfirmUpdate());
+			
 		}
 
 	}

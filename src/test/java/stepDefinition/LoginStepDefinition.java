@@ -23,7 +23,7 @@ public class LoginStepDefinition extends base {
 	@Given("Login to the application using username and password")
 	public void Login() throws Throwable {
 
-		System.out.println("login");              
+		System.out.println("login");  
 
 		BrowserUtils.enterText(login.getUserName(), base.getusername());
 

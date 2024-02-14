@@ -23,7 +23,7 @@ public class BrowserUtils extends base{
 	public static WebElement findAndWaitForElement(WebElement ele) {
 		WebElement element = null;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			element = wait.until(ExpectedConditions.elementToBeClickable(ele));
 			Thread.sleep(500);
 		} catch (Exception e) {
@@ -33,7 +33,7 @@ public class BrowserUtils extends base{
 	}
 	public static List<WebElement> findAndWaitForElements(List<WebElement> list) {
 		try {
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			Thread.sleep(500);
 		} catch (Exception e) {
 			System.out.println("element not clickable");
@@ -41,7 +41,8 @@ public class BrowserUtils extends base{
 		return (List<WebElement>) list;
 	}
 
-	public static WebElement findElementByXpath(String ele) {
+	public static WebElement findElementByXpath(String ele) throws InterruptedException {
+		Thread.sleep(1000);
 		WebElement element = null;
 		try {			
 			return driver.findElement(By.xpath(ele));
@@ -53,9 +54,11 @@ public class BrowserUtils extends base{
 	}
 
 
-	public WebElement findAndWaitForElement(By locator) {
+	public WebElement findAndWaitForElement(By locator) throws InterruptedException {
+		Thread.sleep(1000);
+		
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			return wait.until(ExpectedConditions.elementToBeClickable(locator));
 		} catch (Exception e) {
 			// Handle the case where the element was not found or the waiting times out
@@ -66,7 +69,7 @@ public class BrowserUtils extends base{
 	}
 
 	public static void clickElement(WebElement ele) throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		//Thread.sleep(500);
 		findAndWaitForElement(ele).click();
 	}
@@ -74,7 +77,7 @@ public class BrowserUtils extends base{
 	public static void enterText(WebElement ele, String text) throws InterruptedException {
 
 		if (findAndWaitForElement(ele).isDisplayed() || findAndWaitForElement(ele).isEnabled()) {
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));					
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));					
 
 
 			findAndWaitForElement(ele).clear();
@@ -205,7 +208,7 @@ public class BrowserUtils extends base{
 		
 		String fileName;
 		
-		boolean fileDownloaded=false;
+	//	boolean fileDownloaded=false;
 		
 		long startTime=Instant.now().toEpochMilli();
 		
